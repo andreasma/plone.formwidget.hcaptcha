@@ -15,7 +15,7 @@ except ImportError:
     import simplejson as json
 
 
-VERIFY_SERVER = "www.google.com"
+VERIFY_SERVER = "hcaptcha.com"
 
 
 class HcaptchaResponse(object):
@@ -118,17 +118,16 @@ def submit(hcaptcha_response_field, secret_key, remoteip, verify_server=VERIFY_S
     params = parse.urlencode(
         {
             "secret": secret_key,
-            "remoteip": remoteip,
             "response": hcaptcha_response_field,
         }
     )
 
     request = Request(
-        url="https://{0}/recaptcha/api/siteverify".format(verify_server),
+        url="https://{0}/siteverify".format(verify_server),
         data=params,
         headers={
             "Content-type": "application/x-www-form-urlencoded",
-            "User-agent": "noReCAPTCHA Python",
+            "User-agent": "noHCAPTCHA Python",
         },
     )
 

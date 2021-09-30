@@ -1,0 +1,1 @@
+Verify against hcaptcha API with correct URL, code was still checking against recaptcha siteverify api. [fredvd]
